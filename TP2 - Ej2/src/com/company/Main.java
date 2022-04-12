@@ -6,12 +6,13 @@ public class Main {
 
         Cliente cliente1 = new Cliente();
         Factura factura1 = new Factura();
+        Factura factura2 = new Factura();
 
         cliente1.setCliente("Carlos Gomez", "carlos@email.com", 100);
         //cliente1.mostrarCliente();
 
         factura1.setFactura(cliente1.getNombre(), 578, cliente1.getDescuento());
         factura1.mostrarFactura(cliente1);
-
+        factura2.setFactura();
     }
 }
