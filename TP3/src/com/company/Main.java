@@ -14,7 +14,7 @@ public class Main {
         cilindro1.mostrar();*/
 
         //Ejercicio 2
-        int e = 0;
+        /*int e = 0;
         int s = 0;
         double ingresoTotal=0;
         Persona e1 = new Estudiante("Julián", "Coronel", "julianmacoronel@gmail.com", "9 de julio 3954", "37983263", "Programación", 3000.0, 2020);
@@ -48,7 +48,8 @@ public class Main {
 
         System.out.println("Cantidad de Staff: " + s);
         System.out.println("Cantidad de Estudiantes: " + e);
-        System.out.println("Total de Ingresos de la institución: $" + ingresoTotal);
+        System.out.println("Total de Ingresos de la institución: $" + ingresoTotal);*/
+
 
     }
 }
