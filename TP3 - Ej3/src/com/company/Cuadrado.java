@@ -8,10 +8,10 @@ public class Cuadrado extends Rectangulo {
 
     @Override
     public void mostrarFigura(){
-        System.out.println("==== Cuadrado: ");
-        System.out.println("Lado: " + this.getAlto());
-        System.out.println("Area: " + this.getArea());
-        System.out.println("Perimetro: " + this.getPerimetro());
-        System.out.println("Color: " + this.getColor());
+        System.out.println("==== Cuadrado: "+ "\n" +
+                "Lado: " + this.getAlto() + "\n" +
+                "Area: " + this.getArea() + "\n" +
+                "Perimetro: " + this.getPerimetro() + "\n" +
+                "Color: " + this.getColor());
     }
 }

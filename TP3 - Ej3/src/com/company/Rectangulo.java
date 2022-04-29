@@ -30,11 +30,11 @@ public class Rectangulo extends Figura {
 
     @Override
     public void mostrarFigura(){
-        System.out.println("==== Rectangulo: ");
-        System.out.println("Base: " + this.largo);
-        System.out.println("Altura: " + this.alto);
-        System.out.println("Area: " + this.getArea());
-        System.out.println("Perimetro: " + this.getPerimetro());
-        System.out.println("Color: " + this.getColor());
+        System.out.println("==== Rectangulo: "+ "\n" +
+                "Alto: " + this.getAlto() + "\n" +
+                "Largo: " + this.getLargo() + "\n" +
+                "Area: " + this.getArea() + "\n" +
+                "Perimetro: " + this.getPerimetro() + "\n" +
+                "Color: " + this.getColor());
     }
 }
