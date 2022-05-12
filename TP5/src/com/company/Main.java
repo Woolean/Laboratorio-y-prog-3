@@ -1,6 +1,7 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
@@ -13,7 +14,9 @@ public class Main {
 
         //int añoNacArt, añoAlbum, duracionCanc; //Para agregar canciones, su banda y su album desde cero
         //String nombreBanda, nacion, titAlbum, nombreCanc, genero;
-        String cancionABuscar; //para guardar el título de la cancion que se quiere agregar a la playlist
+        String cancionABuscar;//para guardar el título de la cancion que se quiere agregar a la playlist
+        String opcion = "s", opcionMenu = "s"; //Para salir del do-while en la busqueda de canciones
+        int opcionSwitch, opcionPremium = 0; //Opcion para elegir en el menú
 
         Artista art1 = new Artista("The Beatles", "Inglaterra", 1960);
         Artista art2 = new Artista("Ghost", "Suecia", 2008);
@@ -51,7 +54,8 @@ public class Main {
 
         //System.out.println(canciones);
         ListaBasica playlist = new ListaBasica("playlist");
-        System.out.println(playlist.reproducir());
+        ListaPremium premiumPlaylist = null; //Creo la lista premium vacía, sin nombre
+        //System.out.println(playlist.reproducir());
 
         //Agregar una canción entera (malinterpreté un ejercicio)
         /*Scanner sc = new Scanner(System.in);
@@ -81,12 +85,94 @@ public class Main {
         playlist.añadirCancion(cancNueva);
         System.out.println(playlist.reproducir());*/
 
-        //Añadir una canción de la lista
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Canción a buscar: ");
-        cancionABuscar = sc.nextLine();
-        playlist.añadirCancion(cancionABuscar, canciones);
-        System.out.println(playlist.reproducir());
+        //Menu común
+        do {
+            Scanner scc = new Scanner(System.in);
+            System.out.println("""
+                    === Menu:\s
+                    1- Ver cancion en reproducción.\s
+                    2- Agregar una canción.
+                    3- Mostrar toda la lista.
+                    4- Eliminar canción de la lista.
+                    5- Pasar al paquete Premium.
+                    0- Salir del programa.
+                    """);
+            System.out.print("Opcion: ");
+            opcionSwitch = scc.nextInt();
+            System.out.println("=============");
 
+            switch (opcionSwitch) {
+                case 1:
+                    System.out.println(playlist.reproducir());
+                    break;
+                case 2:
+                    do {
+                        Scanner sc = new Scanner(System.in);
+                        System.out.println("Canción a agregar: ");
+                        cancionABuscar = sc.nextLine();
+                        playlist.añadirCancion(cancionABuscar, canciones);
+                        System.out.println("Agregar otra? s/n");
+                        opcion = sc.nextLine();
+                    } while (!Objects.equals(opcion, "n"));
+                    break;
+                case 3:
+                    playlist.verMiLista();
+                    break;
+                case 4:
+                    playlist.eliminarCancion();
+                    break;
+                case 5:
+                    premiumPlaylist = new ListaPremium("Lista Premium"); //Si quiero crear la lista premium, le pongo un nombre
+                    System.out.println("Gracias por crear una lista Premium!");
+                    opcionSwitch = 0;
+                    break;
+                case 0:
+                    System.out.println("Adiós!");
+                    break;
+                default:
+                    System.out.println("La opción no existe");
+            }
+
+        } while (!Objects.equals(opcionSwitch, 0));
+
+        if (premiumPlaylist != null) { //Compruebo que la lista premium fue creada con nombre, si no tiene nombre no entra en el if
+            do {
+                Scanner scannerPremium = new Scanner(System.in);
+                System.out.println("""
+                    === Menu Premium! ===:\s
+                    1- Ver cancion en reproducción.\s
+                    2- Agregar una canción.
+                    3- Mostrar toda la lista.
+                    4- Eliminar canción de la lista.
+                    5- Pasar al paquete Premium.
+                    0- Salir del programa.
+                    """);
+                System.out.print("Opcion: ");
+                opcionPremium = scannerPremium.nextInt();
+                System.out.println("=============");
+
+                switch (opcionPremium) {
+                    case 1:
+                        premiumPlaylist.reproducir();
+                        break;
+                    case 2:
+                        do {
+                            Scanner scPremium = new Scanner(System.in);
+                            System.out.println("Canción a agregar: ");
+                            cancionABuscar = scPremium.nextLine();
+                            playlist.añadirCancion(cancionABuscar, canciones);
+                            System.out.println("Agregar otra? s/n");
+                            opcion = scPremium.nextLine();
+                        } while (!Objects.equals(opcion, "n"));
+                        break;
+                    case 3:
+                        premiumPlaylist.verMiLista();
+                        break;
+                    case 4:
+
+                }
+
+            }while (!Objects.equals(opcionPremium, 0));
+        }
     }
 }
