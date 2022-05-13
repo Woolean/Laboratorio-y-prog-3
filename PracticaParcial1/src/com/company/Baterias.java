@@ -2,14 +2,27 @@ package com.company;
 
 public class Baterias extends Instrumento{
 
-    private int tambores, platillos;
-    private static double precioTamb = 3000;
-    private static double precioPlat = 2500;
+    private int tambores;
+    private int platillos;
+    private static final double precioTamb = 3000;
+    private static final double precioPlat = 2500;
 
     public Baterias(String marca, int platillos, int tambores) {
         super(marca);
-        this.platillos = platillos;
-        this.tambores = tambores;
+        if(tambores >= 5){
+            this.tambores = 5;
+        } else if(tambores <= 1) {
+            this.tambores = 1;
+        } else {
+            this.tambores = tambores;
+        }
+
+        if(platillos <= 3) {
+            this.platillos = 3;
+        } else {
+            this.platillos = platillos;
+        }
+
         this.setPrecio(platillos*precioPlat + tambores*precioTamb);
     }
 
@@ -17,8 +30,8 @@ public class Baterias extends Instrumento{
     public String toString() {
         return "Baterias{" +
                 ", Marca: " + getMarca() +
-                ", tambores=" + tambores +
                 ", platillos=" + platillos +
+                ", tambores=" + tambores +
                 ", precio: " + getPrecio() +
                 '}'+ "\n";
     }
