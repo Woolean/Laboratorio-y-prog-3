@@ -26,11 +26,11 @@ public class Instrumento{
         return marca;
     }
 
-    public double actualizarPrecios(double aumento){
+    public void actualizarPrecios(double aumento){
         System.out.println("Precio anterior: $" + getPrecio());
         this.setPrecio(precio + (precio*aumento/100));
         System.out.println("Precio nuevo: $" + getPrecio());
-        return precio;
+        //return precio;
     }
 
 }

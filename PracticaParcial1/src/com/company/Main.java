@@ -12,12 +12,14 @@ public class Main {
         GuitarraElectrica c3 = new GuitarraElectrica("Squire", 40000);
         Baterias b1 = new Baterias("Yamaha", 5, 3);
         Baterias b2 = new Baterias("Pearl", 3, 5);
+        Baterias b3 = new Baterias("Pirulo", 5, 0);
 
         lista.add(c1);
         lista.add(c2);
         lista.add(c3);
         lista.add(b1);
         lista.add(b2);
+        lista.add(b3);
 
         System.out.println(lista.toString());
         System.out.println(c1.sonidoAmplificado());
